@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Strona główna</title>
+    <title>Wszystkie sale</title>
     {#    <link rel="stylesheet" href="templates/main.css">#}
     <style>
         .btn {
@@ -20,40 +20,37 @@
             background: gainsboro;
         }
 
-        .form {
-            display: block;
-        }
-
-        .warning {
-            color: red;
-        }
-
-        .done {
-            color: green;
-        }
-
         a.menu {
             color: black;
         }
 
-        a.good {
-            color: green;
+        a.rooms_list {
+            color: black;
+            text-decoration: none;
         }
     </style>
 </head>
 
 <body>
 
-<h1>Witaj na stronie głównej</h1>
+<h1>Lista wszystkich sal</h1>
 
 <div id="menu">
     <button class="btn"><a href="/room" class="menu">Widok sal</a></button>
     <button class="btn"><a href="/room/new" class="menu">Dodaj salę</a></button>
     <button class="btn"><a href="/room/delete" class="menu">Usuń salę</a></button>
     <button class="btn"><a href="/room/modify" class="menu">Modyfikuj salę</a></button>
-</div>
+</div><br>
 
-<br><br>
+<div id="rooms_list">
+<h3>Sale:</h3>
+    <ul>
+    {% for room in rooms %}
+        <li><a href="/room/details/{{ room.id }}" class="rooms_list">{{ room.name }} </a></li><br>
+    {% endfor %}
+    </ul>
+</div><br><br>
+
 <div id="footer">
     <footer>By Paweł Zwoliński &copy;</footer>
 </div>

@@ -1,0 +1,19 @@
+a {
+    color: black;
+}
+
+.btn {
+    margin: 5px;
+    padding: 15px 20px;
+    color: #fff;
+    text-shadow: none;
+    cursor: pointer;
+    border: 0;
+    font-weight: bold;
+    display: inline-block;
+    background: gainsboro;
+}
+
+.form {
+    display: block;
+}

@@ -5,8 +5,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Strona główna</title>
-    {#    <link rel="stylesheet" href="templates/main.css">#}
+    <title>Edytuj informacje o sali</title>
+    {#    <link rel="stylesheet" href="main.css">#}
     <style>
         .btn {
             margin: 5px;
@@ -20,18 +20,6 @@
             background: gainsboro;
         }
 
-        .form {
-            display: block;
-        }
-
-        .warning {
-            color: red;
-        }
-
-        .done {
-            color: green;
-        }
-
         a.menu {
             color: black;
         }
@@ -43,18 +31,27 @@
 </head>
 
 <body>
+<h1>Edytuj salę</h1>
 
-<h1>Witaj na stronie głównej</h1>
-
-<div id="menu">
+<div class="menu">
     <button class="btn"><a href="/room" class="menu">Widok sal</a></button>
     <button class="btn"><a href="/room/new" class="menu">Dodaj salę</a></button>
     <button class="btn"><a href="/room/delete" class="menu">Usuń salę</a></button>
     <button class="btn"><a href="/room/modify" class="menu">Modyfikuj salę</a></button>
 </div>
+<br>
 
-<br><br>
-<div id="footer">
+<div id="rooms_list">
+<h3>Sale:</h3>
+    <ul>
+    {% for room in rooms %}
+        <li>{{ room.name }}</li><br>
+    {% endfor %}
+    </ul>
+</div><br><br>
+
+
+<div class="footer">
     <footer>By Paweł Zwoliński &copy;</footer>
 </div>
 

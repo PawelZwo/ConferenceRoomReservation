@@ -5,8 +5,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Strona główna</title>
-    {#    <link rel="stylesheet" href="templates/main.css">#}
+    <title>Informacje o sali</title>
+    {#    <link rel="stylesheet" href="main.css">#}
     <style>
         .btn {
             margin: 5px;
@@ -20,18 +20,6 @@
             background: gainsboro;
         }
 
-        .form {
-            display: block;
-        }
-
-        .warning {
-            color: red;
-        }
-
-        .done {
-            color: green;
-        }
-
         a.menu {
             color: black;
         }
@@ -43,10 +31,9 @@
 </head>
 
 <body>
+<h1>Dodaj salę</h1>
 
-<h1>Witaj na stronie głównej</h1>
-
-<div id="menu">
+<div class="menu">
     <button class="btn"><a href="/room" class="menu">Widok sal</a></button>
     <button class="btn"><a href="/room/new" class="menu">Dodaj salę</a></button>
     <button class="btn"><a href="/room/delete" class="menu">Usuń salę</a></button>
@@ -54,7 +41,14 @@
 </div>
 
 <br><br>
-<div id="footer">
+<h3>Informacje o sali {{ room.id.name }}</h3>
+<div class="details_view">
+    Pojemność: {{ room.id.capacity }}<br>
+    Projektor: {{ room.id.projector | yesno:"Tak, Nie" }}
+</div>
+
+<br><br>
+<div class="footer">
     <footer>By Paweł Zwoliński &copy;</footer>
 </div>
 

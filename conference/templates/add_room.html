@@ -5,8 +5,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Strona główna</title>
-    {#    <link rel="stylesheet" href="templates/main.css">#}
+    <title>Dodaj salę</title>
+    {#    <link rel="stylesheet" href="main.css">#}
     <style>
         .btn {
             margin: 5px;
@@ -18,10 +18,6 @@
             font-weight: bold;
             display: inline-block;
             background: gainsboro;
-        }
-
-        .form {
-            display: block;
         }
 
         .warning {
@@ -43,14 +39,39 @@
 </head>
 
 <body>
+<h1>Dodaj salę</h1>
 
-<h1>Witaj na stronie głównej</h1>
-
-<div id="menu">
+<div class="menu">
     <button class="btn"><a href="/room" class="menu">Widok sal</a></button>
     <button class="btn"><a href="/room/new" class="menu">Dodaj salę</a></button>
     <button class="btn"><a href="/room/delete" class="menu">Usuń salę</a></button>
     <button class="btn"><a href="/room/modify" class="menu">Modyfikuj salę</a></button>
+</div>
+<br>
+
+<div class="warning">
+    {% if exists %}Sala o nazwie {{ exists.name }} już istnieje.{% endif %}
+</div>
+<div class="done">
+    {% if done == True %}Pomyślnie utworzono nową salę o nazwie {{ done.name }}. Możesz teraz przejść na
+        <a href="/" class="good">stronę główną</a>. {% endif %}
+</div>
+<br><br>
+
+<div id="form">
+    <form method="POST">
+        {% csrf_token %}
+        <div>Nazwa sali: <input type="text" name="room_name" required></div>
+        <br>
+        <div>Liczba miejsc: <input type="number" name="room_capacity" min="5" max="200" required></div>
+        <br>
+        <div>Rzutnik:
+            <input type="radio" name="room_projector" value="yes">tak
+            <input type="radio" name="room_projector" value="no">nie
+        </div>
+        <br>
+        <div><input type="submit" value="Dodaj salę"></div>
+    </form>
 </div>
 
 <br><br>
