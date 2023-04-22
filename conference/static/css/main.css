@@ -1,3 +1,4 @@
+/* Menu buttons */
 .btn {
     margin: 5px;
     padding: 15px 20px;
@@ -10,11 +11,22 @@
     background: gainsboro;
 }
 
+/* LINKS */
 a.menu {
     color: black;
     text-decoration: none;
 }
 
+a.good {
+    color: green;
+}
+
+a.rooms_list {
+    color: black;
+    text-decoration: none;
+}
+
+/* FOOTER */
 .footer {
     position: absolute;
     bottom: 0;
@@ -25,15 +37,13 @@ a.menu {
     text-align: end;
 }
 
+/* YES button on delete form */
 .yes {
     background: red;
     color: white;
 }
 
-.ex {
-    color: red;
-}
-
+/* OTHERS */
 div.details_view {
     display: block;
 }
@@ -47,11 +57,3 @@ div.details_view {
 }
 
 
-a.good {
-    color: green;
-}
-
-a.rooms_list {
-    color: black;
-    text-decoration: none;
-}
