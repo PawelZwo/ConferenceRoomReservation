@@ -25,5 +25,7 @@ urlpatterns = [
     path('room/new', conference.views.AddRoom.as_view()),
     path('room/', conference.views.List.as_view()),
     path('room/details/<int:id>', conference.views.Details.as_view()),
-    path('room/modify', conference.views.Modify.as_view())
+    path('room/modify/<int:id>', conference.views.Modify.as_view()),
+    path('room/delete/<int:id>', conference.views.Delete.as_view()),
+    path('room/reserve/<int:id>', conference.views.Reserve.as_view()),
 ]

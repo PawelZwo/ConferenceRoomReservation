@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Informacje o sali</title>
+    <title>Usuń salę</title>
     <style>
         .btn {
             margin: 5px;
@@ -24,10 +24,6 @@
             text-decoration: none;
         }
 
-        div.details_view {
-            display: block;
-        }
-
         .footer {
             position: absolute;
             bottom: 0;
@@ -38,38 +34,45 @@
             text-align: end;
         }
 
+        .yes {
+            background: red;
+            color: white;
+        }
+
+        .ex {
+            color: red;
+        }
     </style>
 </head>
 <body>
 
-<h1>Dodaj salę</h1>
+<h1>Usuń salę</h1>
 
 <!-- Menu -->
-<div class="main_menu">
-    <button class="btn"><a href="/room" class="menu">Widok sal</a></button>
-    <button class="btn"><a href="/room/new" class="menu">Dodaj salę</a></button>
-</div>
-<br>
 
-<!-- Rooms list -->
-<h3>Informacje o sali</h3>
-<div class="details_view">
-    <b>Nazwa:</b> {{ room_id.name }}<br>
-    <b>Pojemność:</b> {{ room_id.capacity }}<br>
-    <b>Projektor:</b> {{ room_id.projector | yesno:"Tak, Nie" }}<br>
-    <b>Dostępna:</b> {{ room_id.availability | yesno:"Tak, Nie" }}
-</div>
-<br><br>
 
-<!-- Editing menu -->
-<div class="edits">
-    {% if room_id.availability == True %}
-        <button class="btn"><a href="/room/reserve/{{ room_id.id }}" class="menu">Zarezerwuj salę</a>
-        </button>{% endif %}
-    <button class="btn"><a href="/room/delete/{{ room_id.id }}" class="menu">Usuń salę</a></button>
-    <button class="btn"><a href="/room/modify/{{ room_id.id }}" class="menu">Modyfikuj salę</a></button>
-</div>
-<br><br>
+{% if method == 'GET' %}
+    <div class="menu">
+        <button class="btn"><a href="/room/details/{{ room_id.id }}" class="menu">Wróć</a></button>
+    </div>
+    <br>
+    <h3>Czy na pewno chcesz usunąć salę {{ room_id.name }}?</h3>
+
+    <!-- FORM -->
+    <form class="deletion" method="POST">
+        {% csrf_token %}
+        &ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;&ensp;
+        <input type="submit" value="Tak" name="yes" class="yes">
+    </form>
+{% endif %}
+
+{% if method == 'POST' %}
+    <div class="menu">
+        <button class="btn"><a href="/room" class="menu">Wróć</a></button>
+    </div>
+    <br>
+    <p class="ex"> Sala {{ ex.room.name }} została usunięta.</p>
+{% endif %}
 
 <!-- FOOTER -->
 <footer class="footer">

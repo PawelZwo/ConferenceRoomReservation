@@ -6,7 +6,6 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dodaj salę</title>
-    {#    <link rel="stylesheet" href="main.css">#}
     <style>
         .btn {
             margin: 5px;
@@ -30,34 +29,53 @@
 
         a.menu {
             color: black;
+            text-decoration: none;
         }
 
         a.good {
             color: green;
         }
+
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 99%;
+            height: 60px; /* Set the fixed height of the footer here */
+            line-height: 60px; /* Vertically center the text there */
+            background-color: #f5f5f5;
+            text-align: end;
+        }
+
     </style>
 </head>
-
 <body>
-<h1>Dodaj salę</h1>
 
+<h1>Dodaj salę</h1>
+<!-- Menu -->
 <div class="menu">
-    <button class="btn"><a href="/room" class="menu">Widok sal</a></button>
-    <button class="btn"><a href="/room/new" class="menu">Dodaj salę</a></button>
-    <button class="btn"><a href="/room/delete" class="menu">Usuń salę</a></button>
-    <button class="btn"><a href="/room/modify" class="menu">Modyfikuj salę</a></button>
+    <button class="btn"><a href="/room" class="menu">Wróć</a></button>
 </div>
 <br>
 
+<!-- Errors -->
 <div class="warning">
     {% if exists %}Sala o nazwie {{ exists.name }} już istnieje.{% endif %}
 </div>
+<div class="warning">
+    {% if error_wrong_name %}{{ error_wrong_name }}{% endif %}
+</div>
+<div class="warning">
+    {% if error_negative_number %}{{ error_negative_number }}{% endif %}
+</div>
+
+<!-- Created a new room -->
 <div class="done">
-    {% if done == True %}Pomyślnie utworzono nową salę o nazwie {{ done.name }}. Możesz teraz przejść na
-        <a href="/" class="good">stronę główną</a>. {% endif %}
+    {% if done == True %}Pomyślnie utworzono nową salę. Możesz teraz przejść na
+        <a href="/room" class="good">stronę główną</a>. {% endif %}
 </div>
 <br><br>
 
+<!-- FORM Creating a new room -->
 <div id="form">
     <form method="POST">
         {% csrf_token %}
@@ -73,11 +91,13 @@
         <div><input type="submit" value="Dodaj salę"></div>
     </form>
 </div>
-
 <br><br>
-<div id="footer">
-    <footer>By Paweł Zwoliński &copy;</footer>
-</div>
 
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <span class="text-muted">Paweł Zwoliński &copy;</span>
+    </div>
+</footer>
 </body>
 </html>

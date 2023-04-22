@@ -6,7 +6,6 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Wszystkie sale</title>
-    {#    <link rel="stylesheet" href="templates/main.css">#}
     <style>
         .btn {
             margin: 5px;
@@ -22,38 +21,58 @@
 
         a.menu {
             color: black;
+            text-decoration: none;
         }
 
         a.rooms_list {
             color: black;
             text-decoration: none;
         }
+
+        .footer {
+            position: absolute;
+            bottom: 0;
+            width: 99%;
+            height: 60px; /* Set the fixed height of the footer here */
+            line-height: 60px; /* Vertically center the text there */
+            background-color: #f5f5f5;
+            text-align: end;
+        }
+
     </style>
 </head>
-
 <body>
 
 <h1>Lista wszystkich sal</h1>
-
+<!-- Menu -->
 <div id="menu">
     <button class="btn"><a href="/room" class="menu">Widok sal</a></button>
     <button class="btn"><a href="/room/new" class="menu">Dodaj salę</a></button>
-    <button class="btn"><a href="/room/delete" class="menu">Usuń salę</a></button>
-    <button class="btn"><a href="/room/modify" class="menu">Modyfikuj salę</a></button>
-</div><br>
-
-<div id="rooms_list">
-<h3>Sale:</h3>
-    <ul>
-    {% for room in rooms %}
-        <li><a href="/room/details/{{ room.id }}" class="rooms_list">{{ room.name }} </a></li><br>
-    {% endfor %}
-    </ul>
-</div><br><br>
-
-<div id="footer">
-    <footer>By Paweł Zwoliński &copy;</footer>
 </div>
+<br>
 
+<!-- List of rooms -->
+<div id="rooms_list">
+    <h3>Sale:</h3>
+    <ul>
+        {% for room in rooms %}
+            <li><a href="/room/details/{{ room.id }}"
+                   class="rooms_list">{{ room.name }} na {{ room.capacity }}
+                osób, {{ room.projector | yesno:"z projektorem, bez projektora" }}
+                [{{ room.availability | yesno:"Dostępna dziś,Niedostępna dziś" }}]</a>
+            </li><br>
+        {% empty %}
+            Nie ma żadnych sal.
+        {% endfor %}
+    </ul>
+</div>
+<br><br>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <span class="text-muted">Paweł Zwoliński &copy;</span>
+    </div>
+</footer>
 </body>
 </html>
