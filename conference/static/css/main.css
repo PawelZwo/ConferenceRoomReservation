@@ -1,0 +1,57 @@
+.btn {
+    margin: 5px;
+    padding: 15px 20px;
+    color: #fff;
+    text-shadow: none;
+    cursor: pointer;
+    border: 0;
+    font-weight: bold;
+    display: inline-block;
+    background: gainsboro;
+}
+
+a.menu {
+    color: black;
+    text-decoration: none;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 99%;
+    height: 60px; /* Set the fixed height of the footer here */
+    line-height: 60px; /* Vertically center the text there */
+    background-color: #f5f5f5;
+    text-align: end;
+}
+
+.yes {
+    background: red;
+    color: white;
+}
+
+.ex {
+    color: red;
+}
+
+div.details_view {
+    display: block;
+}
+
+.warning {
+    color: red;
+}
+
+.done {
+    color: green;
+}
+
+
+a.good {
+    color: green;
+}
+
+a.rooms_list {
+    color: black;
+    text-decoration: none;
+}

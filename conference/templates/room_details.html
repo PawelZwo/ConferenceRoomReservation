@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="en">
 <head>
@@ -6,39 +7,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Informacje o sali</title>
-    <style>
-        .btn {
-            margin: 5px;
-            padding: 15px 20px;
-            color: #fff;
-            text-shadow: none;
-            cursor: pointer;
-            border: 0;
-            font-weight: bold;
-            display: inline-block;
-            background: gainsboro;
-        }
-
-        a.menu {
-            color: black;
-            text-decoration: none;
-        }
-
-        div.details_view {
-            display: block;
-        }
-
-        .footer {
-            position: absolute;
-            bottom: 0;
-            width: 99%;
-            height: 60px; /* Set the fixed height of the footer here */
-            line-height: 60px; /* Vertically center the text there */
-            background-color: #f5f5f5;
-            text-align: end;
-        }
-
-    </style>
+    <link rel="stylesheet" type="text/css" href="{% static '/css/main.css' %}">
 </head>
 <body>
 
